@@ -1,0 +1,10 @@
+* redirect-to-abstract - Firefox extension
+
+Redirect all pdf links to their abstracts, and overwrite abstract pages to
+bypass the regex (by either appending an ~&~ or ~?~ at the end of the url).
+
+Works for the following archives:
+- arxiv.org
+- openreview.net
+- proceedings.mlr.press
+- proceedings.neurips.cc
