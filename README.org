@@ -3,8 +3,22 @@
 Redirect all pdf links to their abstracts, and overwrite abstract pages to
 bypass the regex (by either appending an ~&~ or ~?~ at the end of the url).
 
+Trying to keep this codebase dead simple (turns out my last attempt was too
+ambitious). Should be chrome-compatible, but someone else will have to test.
+
 Works for the following archives:
 - arxiv.org
 - openreview.net
 - proceedings.mlr.press
 - proceedings.neurips.cc
+
+* Building
+Requires browserify. Just run ~make~.
+
+* Prior Art
+- https://github.com/stites/MyArx -- a conglomerate of a bunch of firefox+arxiv
+  extensions, forked from https://github.com/j3soon/arxiv-utils . This is where
+  the icon comes from but I should probably replace it.
+- https://github.com/weakish/arxiv-url -- original inspiration but is too
+  ambitious in that it tries to rewrite all urls on every page. this extension just intercepts
+  requests to the pdf links and sends to you the abstract.
