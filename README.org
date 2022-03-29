@@ -11,9 +11,14 @@ Works for the following archives:
 - openreview.net
 - proceedings.mlr.press
 - proceedings.neurips.cc
+- aclanthology.org
 
 * Building
-Requires browserify. Just run ~make~.
+Requires browserify. Just run ~make~ or:
+
+#+begin_example sh
+$ nix-shell -p nodePackages.browserify --run "make"
+#+end_example
 
 * Prior Art
 - https://github.com/stites/MyArx -- a conglomerate of a bunch of firefox+arxiv
