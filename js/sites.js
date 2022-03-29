@@ -45,7 +45,10 @@ neurips = {
     },
     breakPdfRegex:"?",
     extraRewriteTimeout: 1000,
-    pdfSelector: () =>  [document.getElementsByClassName("btn-primary")[0]],
+    pdfSelector: () => {
+        const btns = document.querySelectorAll(".col > div > .btn");
+        return [btns[0], btns[btns.length - 1]];
+    },
 }
 
 aclanthology = {
