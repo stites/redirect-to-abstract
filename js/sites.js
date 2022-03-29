@@ -54,13 +54,13 @@ neurips = {
 aclanthology = {
     domain: "aclanthology.org",
     pdfURIPattern:"**.pdf",
-    pdfURIRegex: new RegExp("org\/([a-zA-Z0-9.-]+).pdf$", ""),
+    pdfURIRegex: new RegExp("([a-zA-Z0-9.-]+).pdf$", ""),
     abstractUrl: (ms) => {
         return "https://aclanthology.org/" + ms[0];
     },
     breakPdfRegex:"?",
-    extraRewriteTimeout: 1000,
-    pdfSelector: () =>  [document.getElementsByClassName("btn-primary")[0]],
+    extraRewriteTimeout: 2000,
+    pdfSelector: () =>  [document.querySelector(".acl-paper-link-block > a.btn-primary")],
 }
 
 module.exports.arxiv = arxiv;
