@@ -44,14 +44,27 @@ neurips = {
     pdfSelector: () =>  [document.getElementsByClassName("btn-primary")[0]],
 }
 
+aclanthology = {
+    domain: "aclanthology.org",
+    pdfURIPattern:"**.pdf",
+    pdfURIRegex: new RegExp("org\/([a-zA-Z0-9.-]+).pdf$", ""),
+    abstractUrl: (ms) => {
+        return "https://aclanthology.org/" + ms[0];
+    },
+    breakPdfRegex:"?",
+    pdfSelector: () =>  [document.getElementsByClassName("btn-primary")[0]],
+}
+
 module.exports.arxiv = arxiv;
 module.exports.openreview = openreview;
 module.exports.mlr = mlr;
 module.exports.neurips = neurips;
+module.exports.aclanthology = aclanthology;
 
 module.exports.all = [
     arxiv,
     openreview,
     mlr,
     neurips,
+    aclanthology,
 ];
