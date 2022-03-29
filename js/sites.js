@@ -29,7 +29,7 @@ openreview = {
 mlr = {
     domain: "proceedings.mlr.press",
     pdfURIPattern:"**.pdf",
-    pdfURIRegex: new RegExp("(v[0-9]+\/"+idrx+")\/"+idrx+".pdf$", ""),
+    pdfURIRegex: new RegExp("(v[0-9]+\/"+idrx+").pdf$", ""),
     abstractUrl: (ms) =>  "https://proceedings.mlr.press/" + ms[0] + ".html",
     breakPdfRegex:"?",
     extraRewriteTimeout: 1000,

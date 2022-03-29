@@ -19,6 +19,7 @@ function pdfurlToId (redirectee, url) {
     const r = redirectee
     const uri = url.split(r.domain+"/")[1]
     const ms = uri.match(r.pdfURIRegex)
+
     if (ms === null) {
         throw ("error on match: " + url + " regex:" + r.pdfURIRegex)
     }
