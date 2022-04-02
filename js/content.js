@@ -11,18 +11,37 @@ window.addEventListener('load', () => {
 })
 
 function filterPair(redirectee) {
-    return [(hn) => redirectee.domain === hn, () => adjustPdfUrl(redirectee), redirectee];
+    return [(hn) => redirectee.domain === hn, () => ensureRedirection(redirectee), redirectee];
 }
 
+var count = 1;
+var maxcount = 5;
+
 function adjustPdfUrl(redirectee) {
-    console.debug("timer of:", redirectee.extraRewriteTimeout)
-    setTimeout(() => {
-      const found = redirectee.pdfSelector();
-      console.debug("adujst pdf url on ", location.href, "?", found)
-      found.forEach((el) => {
-        const href = el.getAttribute("href")
-        el.setAttribute("href", href+redirectee.breakPdfRegex)
-        console.debug("adujsting url ", href, "->", el.getAttribute("href"))
-      })
-    }, redirectee.extraRewriteTimeout);
+  const found = redirectee.pdfSelector();
+  found.forEach((el) => {
+    const href = el.getAttribute("href")
+    if (href[href.length-1] !== redirectee.breakPdfRegex) {
+      el.setAttribute("href", href+redirectee.breakPdfRegex)
+      console.debug("[redirect-to-abstract] adujsting url ", href, "->", el.getAttribute("href"))
+    }
+  });
+  count += 1;
+  ensureRedirection(redirectee);
+}
+
+function ensureRedirection(redirectee) {
+  const found = redirectee.pdfSelector();
+  if (found.length === 0) {
+    console.error("[redirect-to-abstract] pdf selector no longer valid! please file an issue at https://github.com/stites/redirect-to-abstract")
+  } else if (count > maxcount) {
+    console.debug("[redirect-to-abstract] no longer rewriting urls");
+  } else {
+    const timeout = count * count;
+    console.debug("[redirect-to-abstract] checking urls again in", timeout, "seconds (", count, "/", maxcount,")")
+    setTimeout(
+      adjustPdfUrl.bind(null, redirectee),
+      100 * count
+    );
+  }
 }

@@ -7,7 +7,6 @@ arxiv = {
     pdfURIRegex: new RegExp("pdf\/("+idrx+").pdf$", ""),
     abstractUrl: (ms) => "https://www.arxiv.org/abs/" + ms[0],
     breakPdfRegex:"?",
-    extraRewriteTimeout: 1000,
     pdfSelector: () => {
         return [
             document.querySelector(".download-pdf"),
@@ -22,7 +21,6 @@ openreview = {
     pdfURIRegex: new RegExp("pdf\\?id=("+idrx+")$", ""),
     abstractUrl: (ms) => "https://openreview.net/forum?id=" + ms[0],
     breakPdfRegex:"&",
-    extraRewriteTimeout: 3000,
     pdfSelector: () => [document.querySelector(".note_content_pdf:not(.item)")],
 }
 
@@ -32,7 +30,6 @@ mlr = {
     pdfURIRegex: new RegExp("(v[0-9]+\/"+idrx+").pdf$", ""),
     abstractUrl: (ms) =>  "https://proceedings.mlr.press/" + ms[0] + ".html",
     breakPdfRegex:"?",
-    extraRewriteTimeout: 1000,
     pdfSelector: () => [document.querySelector("#extras > ul > li > a")],
 }
 
@@ -44,7 +41,6 @@ neurips = {
         return "https://proceedings.neurips.cc/paper/" + ms[0] + "/hash/"+ms[1]+"-Abstract.html";
     },
     breakPdfRegex:"?",
-    extraRewriteTimeout: 1000,
     pdfSelector: () => {
         const btns = document.querySelectorAll(".col > div > .btn");
         return [btns[0], btns[btns.length - 1]];
@@ -59,7 +55,6 @@ aclanthology = {
         return "https://aclanthology.org/" + ms[0];
     },
     breakPdfRegex:"?",
-    extraRewriteTimeout: 2000,
     pdfSelector: () =>  [document.querySelector(".acl-paper-link-block > a.btn-primary")],
 }
 
