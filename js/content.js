@@ -19,7 +19,7 @@ function filterPair(redirectee) {
 }
 
 var count = 1;
-var maxcount = 5;
+var maxcount = 10;
 
 function adjustPdfUrl(redirectee) {
   const found = redirectee.pdfSelector();
