@@ -13,12 +13,12 @@ window.addEventListener('load', () => {
 function filterPair(redirectee) {
     return [
       (hn) => redirectee.domain === hn,
-      () => {adjustPdfUrl(redirectee); ensureRedirection(redirectee)},
+      () => ensureRedirection(redirectee),
       redirectee
     ];
 }
 
-var count = 1;
+var count = 0;
 var maxcount = 10;
 
 function adjustPdfUrl(redirectee) {
