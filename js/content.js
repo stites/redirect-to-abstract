@@ -11,7 +11,11 @@ window.addEventListener('load', () => {
 })
 
 function filterPair(redirectee) {
-    return [(hn) => redirectee.domain === hn, () => ensureRedirection(redirectee), redirectee];
+    return [
+      (hn) => redirectee.domain === hn,
+      () => {adjustPdfUrl(redirectee); ensureRedirection(redirectee)},
+      redirectee
+    ];
 }
 
 var count = 1;
@@ -41,7 +45,7 @@ function ensureRedirection(redirectee) {
     console.debug("[redirect-to-abstract] checking urls again in", timeout, "seconds (", count, "/", maxcount,")")
     setTimeout(
       adjustPdfUrl.bind(null, redirectee),
-      100 * count
+      1000 * timeout
     );
   }
 }
