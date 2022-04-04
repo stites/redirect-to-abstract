@@ -1,21 +1,24 @@
 var sites = require('./sites.js');
 
-window.addEventListener('load', () => {
+console.debug("[redirect-to-abstract] starting...");
+
+function domReady() {
+  console.debug("[redirect-to-abstract] mapping over all sites.js");
   sites.all.map(filterPair).some((ffr)=> {
-      let filter = ffr[0];
-      let fn = ffr[1];
-      let r = ffr[2];
-      let runit = filter(window.location.hostname)
-      return runit && ( fn() || True )
+    let filter = ffr[0];
+    let fn = ffr[1];
+    let r = ffr[2];
+    let runit = filter(window.location.hostname)
+    return runit && ( fn() || true )
   })
-})
+}
 
 function filterPair(redirectee) {
-    return [
-      (hn) => redirectee.domain === hn,
-      () => ensureRedirection(redirectee),
-      redirectee
-    ];
+  return [
+    (hn) => redirectee.domain === hn,
+    () => ensureRedirection(redirectee),
+    redirectee
+  ];
 }
 
 var count = 0;
@@ -48,4 +51,10 @@ function ensureRedirection(redirectee) {
       1000 * timeout
     );
   }
+}
+
+if (window.location.hostname.includes("neurips")) {
+  domReady();
+} else {
+  document.addEventListener('DOMContentLoaded', domReady);
 }
