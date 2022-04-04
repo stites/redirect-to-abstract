@@ -42,8 +42,13 @@ neurips = {
     },
     breakPdfRegex:"?",
     pdfSelector: () => {
-        const btns = document.querySelectorAll(".col > div > .btn");
-        return [btns[0], btns[btns.length - 1]];
+        const nodes = document.querySelectorAll(".col > div > .btn");
+        return [...nodes].filter((el) => {
+            const href = el.getAttribute("href");
+            const parts = href.split(".");
+            const ext = parts[parts.length - 1]
+            return ext.includes("pdf");
+        });
     },
 }
 
