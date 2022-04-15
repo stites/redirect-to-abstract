@@ -48,9 +48,16 @@ function ensureRedirection(ctx, maxcount, count, redirectee) {
   }
 }
 
+function domainCheck(domain) {
+  const parts = domain.split(".");
+  const hn = window.location.hostname;
+  const hnParts = hn.split(".");
+  return hnParts.slice(-1*parts.length).join(".") === domain;
+}
+
 function main(ctx, maxcount) {
   console.debug(header, "starting schedule:", [...Array(maxcount).keys()].map((i) => idx2schedule(i) / 1000));
-  const rs = sites.all.filter((r) => r.domain === window.location.hostname);
+  const rs = sites.all.filter((r) => domainCheck(r.domain));
   if (rs.length !== 1) {
     console.error(header, mkctx(ctx), mkerr("multiple sites found!"), rs);
   } else {
