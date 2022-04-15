@@ -10,8 +10,12 @@ Works for the following archives:
 - arxiv.org
 - openreview.net
 - proceedings.mlr.press
-- proceedings.neurips.cc
+- {proceedings,papers,media}.neurips.cc
+- {proceedings,papers,media}.nips.cc
 - aclanthology.org
+
+Note that all *.neurips.cc and *.nips.cc pdfs will redirect to the
+proceedings.neurips.cc abstract.
 
 * Building
 Requires browserify. Just run ~make~ or:
