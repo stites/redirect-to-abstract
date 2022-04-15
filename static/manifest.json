@@ -10,7 +10,7 @@
   },
 
   "content_scripts": [{
-    "matches": [ "*://arxiv.org/*", "*://*.mlr.press/**", "*://*.neurips.cc/**", "*://openreview.net/*" , "*://aclanthology.org/*"],
+    "matches": [ "*://arxiv.org/*", "*://*.mlr.press/**", "*://*.neurips.cc/**", "*://*.nips.cc/**", "*://openreview.net/*" , "*://aclanthology.org/*"],
     "js": ["content.js"],
     "run_at": "document_idle"
   }],

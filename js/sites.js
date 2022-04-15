@@ -3,6 +3,7 @@ idrx = "[a-zA-Z0-9.]+"
 
 arxiv = {
     domain: "arxiv.org",
+    subdomains: [],
     pdfURIPattern:"**.pdf",
     pdfURIRegex: new RegExp("pdf\/("+idrx+").pdf$", ""),
     abstractUrl: (ms) => "https://www.arxiv.org/abs/" + ms[0],
@@ -17,6 +18,7 @@ arxiv = {
 
 openreview = {
     domain: "openreview.net",
+    subdomains: [],
     pdfURIPattern:"pdf?id=*",
     pdfURIRegex: new RegExp("pdf\\?id=("+idrx+")$", ""),
     abstractUrl: (ms) => "https://openreview.net/forum?id=" + ms[0],
@@ -25,7 +27,8 @@ openreview = {
 }
 
 mlr = {
-    domain: "proceedings.mlr.press",
+    domain: "mlr.press",
+    subdomains: ["proceedings"],
     pdfURIPattern:"**.pdf",
     pdfURIRegex: new RegExp("(v[0-9]+\/"+idrx+").pdf$", ""),
     abstractUrl: (ms) =>  "https://proceedings.mlr.press/" + ms[0] + ".html",
@@ -34,7 +37,8 @@ mlr = {
 }
 
 neurips = {
-    domain: "proceedings.neurips.cc",
+    domain: "neurips.cc",
+    subdomains: ["proceedings", "papers", "media"],
     pdfURIPattern:"**.pdf",
     pdfURIRegex: new RegExp("paper\/([0-9]+)\/file\/("+idrx+")-Paper\\.pdf$", ""),
     abstractUrl: (ms) => {
@@ -52,8 +56,12 @@ neurips = {
     },
 }
 
+nips = Object.assign({}, neurips)
+nips.domain = "nips.cc"
+
 aclanthology = {
     domain: "aclanthology.org",
+    subdomains: [],
     pdfURIPattern:"**.pdf",
     pdfURIRegex: new RegExp("([a-zA-Z0-9.-]+).pdf$", ""),
     abstractUrl: (ms) => {
@@ -67,6 +75,7 @@ module.exports.arxiv = arxiv;
 module.exports.openreview = openreview;
 module.exports.mlr = mlr;
 module.exports.neurips = neurips;
+module.exports.nips = nips;
 module.exports.aclanthology = aclanthology;
 
 module.exports.all = [
@@ -74,5 +83,6 @@ module.exports.all = [
     openreview,
     mlr,
     neurips,
+    nips,
     aclanthology,
 ];
