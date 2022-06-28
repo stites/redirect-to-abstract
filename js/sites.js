@@ -36,6 +36,17 @@ mlr = {
     pdfSelector: () => [document.querySelector("#extras > ul > li > a")],
 }
 
+ijcai = {
+    domain: "ijcai.org",
+    subdomains: [],
+    pdfURIPattern:"**.pdf",
+    pdfURIRegex: new RegExp("Proceedings/([0-9]+)\/Papers\/([0-9]+).pdf$", ""),
+    abstractUrl: (ms) =>  "https://www.ijcai.org/Abstract/"+ms[0]+"/"+ ms[1],
+    breakPdfRegex:"?",
+    pdfSelector: () => [document.querySelector(".content > p > a")],
+}
+
+
 neurips = {
     domain: "neurips.cc",
     subdomains: ["proceedings", "papers", "media"],
@@ -84,5 +95,6 @@ module.exports.all = [
     mlr,
     neurips,
     nips,
+    ijcai,
     aclanthology,
 ];
