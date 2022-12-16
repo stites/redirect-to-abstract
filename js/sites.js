@@ -41,7 +41,10 @@ ijcai = {
     subdomains: [],
     pdfURIPattern:"**.pdf",
     pdfURIRegex: new RegExp("Proceedings/([0-9]+)\/Papers\/([0-9]+).pdf$", ""),
-    abstractUrl: (ms) =>  "https://www.ijcai.org/Abstract/"+ms[0]+"/"+ ms[1],
+    abstractUrl: (ms) => {
+        console.log("stuff", ms);
+        return "https://www.ijcai.org/Abstract/"+ms[0]+"/"+ ms[1];
+    },
     breakPdfRegex:"?",
     pdfSelector: () => [document.querySelector(".content > p > a")],
 }
@@ -85,7 +88,7 @@ aclanthology = {
 biorxiv = {
     domain: "biorxiv.org",
     subdomains: [],
-    pdfURIPattern:"**.pdf",
+    pdfURIPattern: "**.pdf",
     pdfURIRegex: new RegExp("(content\/[a-zA-Z0-9\/.-]+).full.pdf$", ""),
     abstractUrl: (ms) => {
         return "https://biorxiv.org/" + ms[0];

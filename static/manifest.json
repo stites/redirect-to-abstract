@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "redirect-to-abstract",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Redirect pdf links to their abstract.",
 
   "background": {
@@ -17,8 +17,8 @@
           "*://*.nips.cc/**",
           "*://openreview.net/*" ,
           "*://aclanthology.org/*",
-          "*://biorxiv.org/*",
-          "*://ijcai.org/*"
+          "*://*.biorxiv.org/*",
+          "*://*.ijcai.org/*"
       ],
     "js": ["content.js"],
     "run_at": "document_idle"
@@ -28,13 +28,14 @@
     "webRequest",
     "webRequestBlocking",
     "*://arxiv.org/*",
+    "*://*.arxiv.org/*",
     "*://*.mlr.press/*",
     "*://*.neurips.cc/*",
     "*://*.nips.cc/*",
     "*://openreview.net/*",
     "*://aclanthology.org/*",
-    "*://biorxiv.org/*",
-    "*://icjai.org/*"
+    "*://*.biorxiv.org/*",
+    "*://*.icjai.org/*"
   ],
 
   "icons": {

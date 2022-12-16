@@ -6,7 +6,7 @@ sites.all.forEach(function listenBeforeRequests (redirectee) {
     return "*://"+subdomain + redirectee.domain+"/"+redirectee.pdfURIPattern;
   }
 
-  const urlPatterns = [mkPattern("")].concat(redirectee.subdomains.map(mkPattern));
+  const urlPatterns = [mkPattern(""), mkPattern("www")].concat(redirectee.subdomains.map(mkPattern));
   const listener = (deets)=> redirect(redirectee, deets)
   console.log(
     "[redirect-to-abstract]",

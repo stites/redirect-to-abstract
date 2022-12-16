@@ -13,6 +13,7 @@ Works for the following archives:
 - {proceedings,papers,media}.neurips.cc
 - {proceedings,papers,media}.nips.cc
 - aclanthology.org
+- biorxiv.org
 
 Note that all *.neurips.cc and *.nips.cc pdfs will redirect to the
 proceedings.neurips.cc abstract.
@@ -21,7 +22,7 @@ proceedings.neurips.cc abstract.
 Requires browserify. Just run ~make~ or:
 
 #+begin_example sh
-$ nix-shell -p nodePackages.browserify --run "make"
+$ nix build
 #+end_example
 
 * Prior Art
