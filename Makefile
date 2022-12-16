@@ -6,8 +6,8 @@
 
 .PHONY: build clean package watch purge install
 
-package: clean move-static build
-	mkdir -p extension && cd extension && zip -r redirect-to-abstract.zip *
+package: clean
+	make build && make install
 
 clean:
 	rm -rf extension/*
@@ -18,10 +18,10 @@ purge: clean
 nuke: purge
 	git clean -fx
 
-move-static:
-	mkdir -p extension && cp -f static/* extension/
+build: extension/content.js extension/background.js extension/manifest.json
 
-build: extension/content.js extension/background.js
+extension/manifest.json:
+	mkdir -p extension && cp -f static/* extension/
 
 extension/content.js:
 	mkdir -p extension && browserify js/content.js > extension/content.js
