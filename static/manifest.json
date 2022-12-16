@@ -10,7 +10,16 @@
   },
 
   "content_scripts": [{
-    "matches": ["*://arxiv.org/*", "*://*.mlr.press/**", "*://*.neurips.cc/**", "*://*.nips.cc/**", "*://openreview.net/*" , "*://aclanthology.org/*", "*://ijcai.org/*"],
+      "matches": [
+          "*://arxiv.org/*",
+          "*://*.mlr.press/**",
+          "*://*.neurips.cc/**",
+          "*://*.nips.cc/**",
+          "*://openreview.net/*" ,
+          "*://aclanthology.org/*",
+          "*://biorxiv.org/*",
+          "*://ijcai.org/*"
+      ],
     "js": ["content.js"],
     "run_at": "document_idle"
   }],
@@ -24,6 +33,7 @@
     "*://*.nips.cc/*",
     "*://openreview.net/*",
     "*://aclanthology.org/*",
+    "*://biorxiv.org/*",
     "*://icjai.org/*"
   ],
 
