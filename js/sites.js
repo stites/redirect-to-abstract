@@ -71,12 +71,25 @@ aclanthology = {
     pdfSelector: () =>  [document.querySelector(".acl-paper-link-block > a.btn-primary")],
 }
 
+biorxiv = {
+    domain: "biorxiv.org",
+    subdomains: [],
+    pdfURIPattern:"**.pdf",
+    pdfURIRegex: new RegExp("(content\/[a-zA-Z0-9\/.-]+).full.pdf$", ""),
+    abstractUrl: (ms) => {
+        return "https://biorxiv.org/" + ms[0];
+    },
+    breakPdfRegex:"?",
+    pdfSelector: () =>  [document.querySelector(".pane-content > a.article-dl-pdf-link")],
+}
+
 module.exports.arxiv = arxiv;
 module.exports.openreview = openreview;
 module.exports.mlr = mlr;
 module.exports.neurips = neurips;
 module.exports.nips = nips;
 module.exports.aclanthology = aclanthology;
+module.exports.biorxiv = biorxiv;
 
 module.exports.all = [
     arxiv,
@@ -85,4 +98,5 @@ module.exports.all = [
     neurips,
     nips,
     aclanthology,
+    biorxiv,
 ];
