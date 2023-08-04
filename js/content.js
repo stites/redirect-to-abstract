@@ -7,11 +7,14 @@ const mkerr = (msg) => "Error! "+msg+ " Please file an issue at https://github.c
 
 function adjustPdfUrl(ctx, redirectee) {
   const found = redirectee.pdfSelector();
+  console.debug(header, "found pdf links:", found)
   found.forEach((el) => {
     const href = el.getAttribute("href");
     if (href[href.length-1] !== redirectee.breakPdfRegex) {
       el.setAttribute("href", href+redirectee.breakPdfRegex);
       console.debug(header, mkctx(ctx), "adujsting url "+ href+ "->"+ el.getAttribute("href"));
+    } else {
+       console.error(header, "but href postfixed with regex breaker");
     }
   });
 }

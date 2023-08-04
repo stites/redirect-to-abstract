@@ -23,7 +23,7 @@ openreview = {
     pdfURIRegex: new RegExp("pdf\\?id=("+idrx+")$", ""),
     abstractUrl: (ms) => "https://openreview.net/forum?id=" + ms[0],
     breakPdfRegex:"&",
-    pdfSelector: () => [document.querySelector(".note_content_pdf:not(.item)"), document.querySelector("a.citation_pdf_url")],
+    pdfSelector: () => [document.querySelector("a.citation_pdf_url")],
 }
 
 mlr = {
